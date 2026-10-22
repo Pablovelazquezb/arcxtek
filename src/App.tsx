@@ -41,13 +41,13 @@ const AppleButton: React.FC<{
 }> = ({ label = "Iniciar Proyecto", full = false, href = "#contacto", onClick }) => {
   const content = (
     <>
-      <LogoMark className="w-4 h-4 text-black" />
+      <AppleLogo className="w-4 h-4" />
       <span>{label}</span>
-      <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+      <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-[1px]" />
     </>
   );
 
-  const className = `group inline-flex items-center justify-center gap-2 rounded-full bg-white text-black font-medium text-sm px-5 py-3 transition-all hover:bg-white/90 active:scale-[0.98] cursor-pointer shadow-[0_0_20px_rgba(255,255,255,0.25)] ${
+  const className = `group inline-flex items-center justify-center gap-2 rounded-full bg-white text-black font-medium text-sm px-5 py-3 transition-all hover:bg-white/90 active:scale-[0.98] cursor-pointer ${
     full ? "w-full" : ""
   }`;
 
@@ -67,7 +67,7 @@ const AppleButton: React.FC<{
 
 const SectionEyebrow: React.FC<{ label: string; tag?: string }> = ({ label, tag }) => (
   <div className="inline-flex items-center gap-2">
-    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00e5ff]" />
+    <span className="w-1.5 h-1.5 rounded-full bg-white" />
     <span className="text-xs uppercase tracking-widest text-white/70 font-semibold">{label}</span>
     {tag && (
       <span className="px-2 py-0.5 rounded-full border border-white/10 text-white/50 text-[11px] font-medium bg-white/[0.03]">
@@ -168,24 +168,23 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[#0c0c0c] text-white selection:bg-brand/30">
       
-      {/* 1. Global Background Video (Fixed, behind everything) */}
+      {/* Global background video (fixed, behind everything) */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover pointer-events-none opacity-30 mix-blend-screen"
+          className="w-full h-full object-cover pointer-events-none"
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_064122_c4750c0e-7476-4b44-94a2-a85a65c63bf2.mp4"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0c0c0c]/80 via-[#0c0c0c]/90 to-[#0c0c0c]" />
       </div>
 
-      {/* 2. Hidden-on-mobile fixed vertical guide lines at 36rem */}
+      {/* Hidden-on-mobile fixed vertical guide lines at 36rem container edges */}
       <div className="hidden md:block pointer-events-none fixed inset-y-0 left-1/2 -translate-x-[calc(50%+36rem)] w-px bg-white/10 z-[5]" />
       <div className="hidden md:block pointer-events-none fixed inset-y-0 left-1/2 translate-x-[calc(-50%+36rem)] w-px bg-white/10 z-[5]" />
 
-      {/* 3. Global SVG noise filter for shiny headline */}
+      {/* Global SVG noise filter at root level for shiny headline */}
       <svg className="fixed top-0 left-0 w-0 h-0 pointer-events-none" aria-hidden="true">
         <filter id="c3-noise">
           <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" />
@@ -200,14 +199,15 @@ export default function App() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="sticky top-0 z-50 bg-[#0c0c0c]/70 backdrop-blur-xl border-b border-white/10"
+        className="sticky top-0 z-50 bg-[#0c0c0c]/80 backdrop-blur-xl border-b border-white/10"
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#hero" className="flex items-center gap-3 group" aria-label="Arcxtek Home">
-            <LogoMark className="w-7 h-7 text-white transition-transform group-hover:scale-105" />
-            <span className="font-semibold text-lg tracking-tight">arcxtek</span>
+          {/* Left: just the LogoMark (NO text) */}
+          <a href="#hero" className="flex items-center group" aria-label="Arcxtek Home">
+            <LogoMark className="w-8 h-8 text-white transition-transform group-hover:scale-105" />
           </a>
 
+          {/* Center: navigation links with staggered animation */}
           <div className="hidden md:flex items-center gap-8">
             {['Soluciones', 'Servicios', 'Arquitectura', 'Clientes', 'Contacto'].map((link, i) => (
               <motion.a
@@ -223,6 +223,7 @@ export default function App() {
             ))}
           </div>
 
+          {/* Right desktop: WhatsApp + AppleButton */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href="https://wa.me/5219990000000?text=Hola%20Arcxtek,%20quiero%20cotizar%20un%20proyecto%20de%20software"
@@ -374,7 +375,7 @@ export default function App() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 1.1 }}
           className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0e1014]/90 backdrop-blur-2xl shadow-[0_30px_90px_rgba(0,0,0,0.85)]"
         >
           {/* macOS Title Bar */}
@@ -723,7 +724,7 @@ export default function App() {
       <section id="arquitectura" className="c3-pricing-section border-t border-white/10">
         {/* Pricing noise filter */}
         <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-          <filter id="c3-noise-pricing">
+          <filter id="c3-noise">
             <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" stitchTiles="stitch" />
             <feComponentTransfer><feFuncA type="linear" slope="0.075" /></feComponentTransfer>
             <feComposite in2="SourceGraphic" operator="in" result="noise" />
@@ -733,7 +734,7 @@ export default function App() {
 
         {/* Giant Watermark */}
         <div className="c3-watermark-container">
-          <div className="c3-watermark-main" style={{ filter: 'url(#c3-noise-pricing)' }}>
+          <div className="c3-watermark-main">
             <span className="c3-watermark-line-1">Tu software.</span>
             <span className="c3-watermark-line-2">Revitalizado</span>
           </div>
