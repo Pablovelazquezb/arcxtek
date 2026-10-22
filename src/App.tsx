@@ -72,15 +72,9 @@ const WhatsAppButton: React.FC<{
   </a>
 );
 
-const SectionEyebrow: React.FC<{ label: string; tag?: string }> = ({ label, tag }) => (
-  <div className="inline-flex items-center gap-2">
-    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00e5ff]" />
-    <span className="text-xs uppercase tracking-widest text-white/70 font-semibold">{label}</span>
-    {tag && (
-      <span className="px-2 py-0.5 rounded-full border border-white/10 text-white/50 text-[11px] font-medium bg-white/[0.03]">
-        {tag}
-      </span>
-    )}
+const SectionEyebrow: React.FC<{ label: string }> = ({ label }) => (
+  <div className="text-xs uppercase tracking-widest text-white/50 font-semibold">
+    {label}
   </div>
 );
 
@@ -103,61 +97,43 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formSent, setFormSent] = useState(false);
 
-  // Proyectos reales desarrollados por Arcxtek
+  // Proyectos reales desarrollados por Arcxtek (Conciso y Elegante)
   const projects = [
     {
       client: "Coloso Energy",
       logo: "/assets/clients/coloso_transparent.png",
-      tag: "IoT & Monitoreo Energético",
-      title: "Telemetría y Analítica en Tiempo Real",
-      desc: "Ingesta y procesamiento masivo de más de 18,400 lecturas por minuto en subestaciones y microredes eléctricas con alertas preventivas y dashboards en vivo.",
-      impact: "Cero latencia anómala · Uptime 99.99%",
-      tech: ["IoT Core", "WebSockets", "TimescaleDB", "Microservicios"]
+      title: "Telemetría y Monitoreo IoT",
+      desc: "Ingesta masiva de 18,400 lecturas/min en microredes eléctricas con alertas preventivas y analítica en tiempo real."
     },
     {
       client: "Liupana del Sureste",
       logo: "/assets/clients/liupana_transparent.png",
-      tag: "ERP & Construcción",
-      title: "Control de Obra y Finanzas Inmobiliarias",
-      desc: "Digitalización integral del avance físico y financiero de obras, estimaciones de contratistas y control presupuestal sin discrepancias contables en 12 desarrollos activos.",
-      impact: "Trazabilidad 100% de costos de obra",
-      tech: ["React", "Node.js", "PostgreSQL", "Cloud RBAC"]
+      title: "ERP de Control de Obra",
+      desc: "Digitalización integral del avance constructivo, estimaciones de contratistas y finanzas en desarrollos activos."
     },
     {
       client: "Papá Colchón",
       logo: "/assets/clients/papacolchon_transparent.png",
-      tag: "E-Commerce & Retail",
-      title: "Plataforma Omnicanal y Despacho Logístico",
-      desc: "Sincronización de inventario multi-sucursal en milisegundos, motor de ruteo de entregas automatizado y checkout acelerado con carga en menos de 0.7s.",
-      impact: "Cero sobreventas en temporadas altas",
-      tech: ["Next.js", "Algolia", "Redis", "Logistics API"]
+      title: "E-Commerce y Despacho Logístico",
+      desc: "Sincronización de inventario multi-sucursal en milisegundos y ruteo automatizado de entregas."
     },
     {
       client: "Montessori Quinto Sol",
       logo: "/assets/clients/montessori.png",
-      tag: "FinTech & Educación",
-      title: "Ecosistema Escolar y Cobranza Automatizada",
-      desc: "Portal administrativo institucional con conciliación bancaria SPEI inmediata, facturación CFDI en automático y gestión escolar para familias.",
-      impact: "96% de adopción de tutores y cobranza puntual",
-      tech: ["SPEI Webhooks", "Facturación CFDI", "Portal Web"]
+      title: "Plataforma de Pagos y Gestión",
+      desc: "Automatización de cobranza con conciliación bancaria SPEI en tiempo real y facturación institucional."
     },
     {
       client: "Bek de Santa Lilia",
       logo: "/assets/clients/bek_transparent.png",
-      tag: "Gestión Inmobiliaria",
-      title: "Control de Accesos y Gestión Residencial",
-      desc: "Sistema centralizado de control de accesos, gestión comunitaria, reservaciones y administración de cuotas para desarrollo residencial de alto nivel.",
-      impact: "Operación de accesos automatizada",
-      tech: ["App Móvil", "IoT Gateways", "Cloud Dashboard"]
+      title: "Control de Accesos Residencial",
+      desc: "Sistema centralizado de accesos, gestión comunitaria y administración de cuotas de mantenimiento."
     },
     {
       client: "Monte de Guadalupe",
       logo: "/assets/clients/monteguadalupe_transparent.png",
-      tag: "Operaciones & Trazabilidad",
-      title: "Sistema Operativo y Control de Inventarios",
-      desc: "Plataforma de coordinación de procesos, trazabilidad y control de inventarios agroindustriales con reportería ejecutiva en la nube.",
-      impact: "Control total de mermas y existencias",
-      tech: ["PWA Offline-first", "GraphQL", "PostgreSQL"]
+      title: "Sistema Operativo e Inventarios",
+      desc: "Control de trazabilidad y coordinación de procesos operativos agroindustriales en la nube."
     }
   ];
 
@@ -181,7 +157,7 @@ export default function App() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover pointer-events-none opacity-40 mix-blend-screen"
+          className="w-full h-full object-cover pointer-events-none opacity-35 mix-blend-screen"
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_064122_c4750c0e-7476-4b44-94a2-a85a65c63bf2.mp4"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c0c0c]/80 via-[#0c0c0c]/90 to-[#0c0c0c]" />
@@ -301,7 +277,7 @@ export default function App() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="mb-8"
+          className="mb-6"
         >
           <SectionEyebrow label="Ingeniería de Software a la Medida" />
         </motion.div>
@@ -322,9 +298,9 @@ export default function App() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-8 text-white/70 max-w-xl text-base md:text-lg leading-[1.6]"
+          className="mt-8 text-white/70 max-w-lg text-base md:text-lg leading-[1.6]"
         >
-          Diseñamos, programamos y desplegamos plataformas web, aplicaciones móviles y arquitecturas cloud para resolver los retos operativos más exigentes. Código 100% propietario.
+          Diseñamos y construimos plataformas web, aplicaciones móviles y arquitecturas cloud para empresas líderes.
         </motion.p>
 
         {/* CTA BUTTONS (PRIORITY: CONTACT) */}
@@ -337,98 +313,48 @@ export default function App() {
           <WhatsAppButton label="Platicar por WhatsApp" className="w-full sm:w-auto" />
           <ActionButton label="Cotizar Proyecto" href="#contacto" full={false} />
         </motion.div>
-
-        {/* Proof metrics */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.8 }}
-          className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-white/50 tracking-wide"
-        >
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" /> 100% Propiedad Intelectual
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" /> Cero Rentas de Software
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" /> SLA 99.99% en Producción
-          </span>
-        </motion.div>
       </section>
 
       {/* SECTION: PROYECTOS QUE HEMOS HECHO */}
       <section id="proyectos" className="max-w-6xl mx-auto px-6 py-20 md:py-28 relative z-10 border-t border-white/10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div>
-            <SectionEyebrow label="Casos Reales" tag="En Producción" />
-            <h2 className="mt-4 text-3xl md:text-5xl font-semibold tracking-tight text-white">
-              Proyectos que hemos hecho
-            </h2>
-            <p className="mt-3 text-white/60 text-sm md:text-base max-w-xl leading-relaxed">
-              Sistemas en operación real que procesan millones de datos, automatizan cadenas de valor y eliminan fricciones operativas.
-            </p>
-          </div>
-          <a
-            href="#contacto"
-            className="inline-flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 font-medium transition-colors"
-          >
-            <span>¿Tienes un requerimiento similar? Hablemos</span>
-            <ChevronRight className="w-4 h-4" />
-          </a>
+        <div className="mb-14 text-center md:text-left">
+          <SectionEyebrow label="Casos de Estudio" />
+          <h2 className="mt-3 text-3xl md:text-5xl font-semibold tracking-tight text-white">
+            Proyectos que hemos hecho
+          </h2>
+          <p className="mt-2 text-white/50 text-sm md:text-base max-w-lg">
+            Sistemas propietarios construidos para operar a escala.
+          </p>
         </div>
 
-        {/* Grid de proyectos reales */}
+        {/* Grid de proyectos reales (Limpio y Elegante) */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, idx) => (
             <motion.article
               key={project.client}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="liquid-glass rounded-2xl p-6 flex flex-col justify-between group hover:border-cyan-400/40 transition-all duration-300"
+              transition={{ duration: 0.4, delay: idx * 0.06 }}
+              className="liquid-glass rounded-2xl p-7 flex flex-col justify-between group hover:border-cyan-400/30 transition-all duration-300"
             >
               <div>
-                {/* Header: Client Logo + Tag */}
-                <div className="flex items-center justify-between pb-5 border-b border-white/10">
-                  <div className="h-10 flex items-center">
-                    <img
-                      src={project.logo}
-                      alt={project.client}
-                      className="max-h-8 max-w-[130px] w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
-                    />
-                  </div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-white/10 text-white/50 bg-white/[0.02]">
-                    {project.tag}
-                  </span>
+                {/* Header: Client Logo */}
+                <div className="h-12 flex items-center mb-6">
+                  <img
+                    src={project.logo}
+                    alt={project.client}
+                    className="max-h-9 max-w-[140px] w-auto object-contain opacity-85 group-hover:opacity-100 transition-opacity"
+                  />
                 </div>
 
                 {/* Title & Desc */}
-                <h3 className="mt-5 text-lg font-semibold text-white tracking-tight group-hover:text-cyan-300 transition-colors">
+                <h3 className="text-base font-semibold text-white tracking-tight group-hover:text-cyan-300 transition-colors">
                   {project.title}
                 </h3>
-                <p className="mt-3 text-xs md:text-sm text-white/65 leading-relaxed">
+                <p className="mt-2.5 text-xs md:text-sm text-white/60 leading-relaxed">
                   {project.desc}
                 </p>
-
-                {/* Impact Highlight */}
-                <div className="mt-4 p-3 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-cyan-400 font-medium flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                  <span>{project.impact}</span>
-                </div>
-              </div>
-
-              {/* Tech Stack Pills */}
-              <div className="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-1.5">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/5 text-white/50"
-                  >
-                    {t}
-                  </span>
-                ))}
               </div>
             </motion.article>
           ))}
@@ -438,11 +364,9 @@ export default function App() {
       {/* SECTION: CLIENTES / LOGOS EN CARRUSEL */}
       <section id="clientes" className="py-16 md:py-24 relative z-10 border-t border-white/10 overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 text-center mb-10">
-          <p className="text-xs uppercase tracking-widest text-white/40 font-semibold mb-2">
-            Validación Empresarial
-          </p>
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
-            Empresas líderes impulsadas por Arcxtek
+          <SectionEyebrow label="Validación" />
+          <h2 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight text-white">
+            Empresas que confían en Arcxtek
           </h2>
         </div>
 
@@ -482,9 +406,9 @@ export default function App() {
         >
           {/* Radial Glow */}
           <div
-            className="absolute inset-0 pointer-events-none opacity-30"
+            className="absolute inset-0 pointer-events-none opacity-20"
             style={{
-              background: 'radial-gradient(600px circle at 50% 0%, rgba(37,211,102,0.15), transparent 70%)'
+              background: 'radial-gradient(600px circle at 50% 0%, rgba(37,211,102,0.12), transparent 70%)'
             }}
           />
 
@@ -492,12 +416,12 @@ export default function App() {
             {/* Left info column */}
             <div className="md:col-span-5 space-y-6">
               <div>
-                <SectionEyebrow label="Contacto Directo" tag="Respuesta &lt; 24h" />
-                <h2 className="mt-4 text-3xl md:text-5xl font-semibold tracking-tight text-white leading-[1.05]">
-                  ¿Tienes un proyecto en mente?
+                <SectionEyebrow label="Contacto Directo" />
+                <h2 className="mt-3 text-3xl md:text-5xl font-semibold tracking-tight text-white leading-[1.05]">
+                  Hablemos de tu proyecto.
                 </h2>
-                <p className="mt-4 text-white/65 text-sm md:text-base leading-relaxed">
-                  Platica directamente con nuestro equipo de ingeniería. Evaluamos la arquitectura técnica y te entregamos un estimado sin compromiso.
+                <p className="mt-3 text-white/60 text-sm md:text-base leading-relaxed">
+                  Evaluamos tus requerimientos técnicos y te entregamos una propuesta sin compromiso.
                 </p>
               </div>
 
@@ -510,16 +434,16 @@ export default function App() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-2xl bg-[#25d366]/10 border border-[#25d366]/30 hover:bg-[#25d366]/20 transition-all group cursor-pointer"
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#25d366] text-black flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_20px_rgba(37,211,102,0.4)]">
-                    <WhatsAppLogo className="w-6 h-6" />
+                  <div className="w-11 h-11 rounded-full bg-[#25d366] text-black flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_20px_rgba(37,211,102,0.4)]">
+                    <WhatsAppLogo className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-white group-hover:text-[#25d366] transition-colors">
                       Escríbenos por WhatsApp
                     </div>
-                    <div className="text-xs text-white/50">Respuesta inmediata &middot; Atención personalizada</div>
+                    <div className="text-xs text-white/50">Respuesta inmediata</div>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-[#25d366] ml-auto transition-transform group-hover:translate-x-1" />
+                  <ChevronRight className="w-4 h-4 text-[#25d366] ml-auto transition-transform group-hover:translate-x-1" />
                 </a>
 
                 {/* Email Direct */}
@@ -527,12 +451,12 @@ export default function App() {
                   href="mailto:contacto@arcxtek.com"
                   className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:bg-white/[0.05] transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
-                    <Mail className="w-5 h-5" />
+                  <div className="w-11 h-11 rounded-full bg-white/10 text-white flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                    <Mail className="w-4 h-4" />
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-white">contacto@arcxtek.com</div>
-                    <div className="text-xs text-white/50">Envíanos un brief o requerimiento por correo</div>
+                    <div className="text-xs text-white/50">Envíanos un correo directo</div>
                   </div>
                 </a>
               </div>
@@ -540,17 +464,17 @@ export default function App() {
 
             {/* Right form column */}
             <div className="md:col-span-7 bg-[#0a0c10]/70 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md">
-              <h3 className="text-lg font-semibold text-white mb-2">Cuéntanos sobre tu proyecto</h3>
-              <p className="text-xs text-white/50 mb-6">
-                Completa este formulario breve y te contactaremos el mismo día.
+              <h3 className="text-base font-semibold text-white mb-1">Cotizar proyecto</h3>
+              <p className="text-xs text-white/50 mb-5">
+                Te responderemos el mismo día hábil.
               </p>
 
               {formSent ? (
                 <div className="p-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center">
-                  <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto mb-3" />
-                  <h4 className="text-base font-semibold text-white">¡Mensaje recibido con éxito!</h4>
-                  <p className="text-xs text-white/70 mt-1 max-w-sm mx-auto">
-                    Un arquitecto de software de Arcxtek analizará tu proyecto y se comunicará contigo a la brevedad.
+                  <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
+                  <h4 className="text-sm font-semibold text-white">¡Mensaje enviado con éxito!</h4>
+                  <p className="text-xs text-white/60 mt-1">
+                    Un ingeniero de Arcxtek se comunicará contigo a la brevedad.
                   </p>
                 </div>
               ) : (
@@ -559,63 +483,51 @@ export default function App() {
                     e.preventDefault();
                     setFormSent(true);
                   }}
-                  className="space-y-4"
+                  className="space-y-3.5"
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div>
-                      <label className="block text-[11px] uppercase tracking-wider text-white/50 font-medium mb-1.5">
-                        Nombre completo *
-                      </label>
                       <input
                         type="text"
                         required
-                        placeholder="Ej. Roberto Martínez"
+                        placeholder="Nombre *"
                         className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-cyan-400 transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] uppercase tracking-wider text-white/50 font-medium mb-1.5">
-                        Correo corporativo *
-                      </label>
                       <input
                         type="email"
                         required
-                        placeholder="Ej. roberto@empresa.com"
+                        placeholder="Correo electrónico *"
                         className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-cyan-400 transition-colors"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[11px] uppercase tracking-wider text-white/50 font-medium mb-1.5">
-                      Teléfono o WhatsApp *
-                    </label>
                     <input
                       type="tel"
                       required
-                      placeholder="Ej. +52 999 123 4567"
+                      placeholder="Teléfono o WhatsApp *"
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-cyan-400 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] uppercase tracking-wider text-white/50 font-medium mb-1.5">
-                      ¿Qué software necesita construir tu empresa? *
-                    </label>
                     <textarea
                       rows={3}
                       required
-                      placeholder="Ej. Necesitamos un ERP para coordinar almacenes, o una aplicación móvil con telemetría en tiempo real..."
+                      placeholder="Describe brevemente qué software necesitas construir..."
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-cyan-400 transition-colors resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl bg-white text-black font-semibold text-sm hover:bg-white/90 transition-all flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,255,255,0.2)] cursor-pointer active:scale-[0.99]"
+                    className="w-full py-3.5 rounded-xl bg-white text-black font-semibold text-sm hover:bg-white/90 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-pointer active:scale-[0.99]"
                   >
-                    <Send className="w-4 h-4 text-black" />
-                    <span>Enviar y Agendar Diagnóstico Técnico</span>
+                    <Send className="w-3.5 h-3.5 text-black" />
+                    <span>Enviar Consulta</span>
                   </button>
                 </form>
               )}
@@ -629,7 +541,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
           <div className="flex items-center gap-3">
             <LogoMark className="w-5 h-5 text-white/60" />
-            <span>&copy; {new Date().getFullYear()} Arcxtek. Software a la medida de alto rendimiento.</span>
+            <span>&copy; {new Date().getFullYear()} Arcxtek. Software a la medida.</span>
           </div>
           <div className="flex items-center gap-6">
             <a href="#proyectos" className="hover:text-white transition-colors">Proyectos</a>
