@@ -303,7 +303,7 @@ export default function App() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <SectionEyebrow label="Ingeniería de Software a la Medida" tag="AI-Native" />
+          <SectionEyebrow label="Ingeniería de Software a la Medida" />
         </motion.div>
 
         <motion.h1
@@ -435,32 +435,39 @@ export default function App() {
         </div>
       </section>
 
-      {/* SECTION: CLIENTES / LOGOS */}
-      <section id="clientes" className="max-w-6xl mx-auto px-6 py-16 md:py-20 relative z-10 border-t border-white/10">
-        <div className="text-center mb-10">
-          <p className="text-xs uppercase tracking-widest text-white/40 font-semibold">
-            Empresas líderes impulsadas por Arcxtek
+      {/* SECTION: CLIENTES / LOGOS EN CARRUSEL */}
+      <section id="clientes" className="py-16 md:py-24 relative z-10 border-t border-white/10 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 text-center mb-10">
+          <p className="text-xs uppercase tracking-widest text-white/40 font-semibold mb-2">
+            Validación Empresarial
           </p>
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
+            Empresas líderes impulsadas por Arcxtek
+          </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-5 items-center">
-          {clientLogos.map((client, idx) => (
-            <motion.div
-              key={client.name}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
-              className="flex items-center justify-center p-3 h-16 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-white/10 transition-all group"
-              title={client.name}
-            >
-              <img
-                src={client.src}
-                alt={client.name}
-                className="max-h-8 max-w-[110px] w-auto object-contain opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all"
-              />
-            </motion.div>
-          ))}
+        {/* Carousel Container with fade masks */}
+        <div className="relative w-full overflow-hidden">
+          {/* Gradient Masks */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-44 bg-gradient-to-r from-[#0c0c0c] to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 md:w-44 bg-gradient-to-l from-[#0c0c0c] to-transparent z-10" />
+
+          {/* Continuous scrolling marquee track */}
+          <div className="flex animate-marquee gap-6 py-4 items-center">
+            {[...clientLogos, ...clientLogos, ...clientLogos].map((client, idx) => (
+              <div
+                key={`${client.name}-${idx}`}
+                className="liquid-glass rounded-2xl px-8 py-5 h-24 min-w-[200px] md:min-w-[240px] flex items-center justify-center border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-cyan-400/30 transition-all duration-300 group cursor-default flex-shrink-0"
+                title={client.name}
+              >
+                <img
+                  src={client.src}
+                  alt={client.name}
+                  className="max-h-10 max-w-[150px] w-auto object-contain opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
