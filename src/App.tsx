@@ -19,10 +19,12 @@ const WhatsAppLogo: React.FC<{ className?: string }> = ({ className = "w-4 h-4" 
   </svg>
 );
 
-const LogoMark: React.FC<{ className?: string }> = ({ className = "w-8 h-8" }) => (
-  <svg viewBox="0 0 256 256" fill="currentColor" className={className} aria-hidden="true">
-    <path d="M 0 128 C 70.692 128 128 185.308 128 256 L 64 256 C 64 220.654 35.346 192 0 192 Z M 256 192 C 220.654 192 192 220.654 192 256 L 128 256 C 128 185.308 185.308 128 256 128 Z M 128 0 C 128 70.692 70.692 128 0 128 L 0 64 C 35.346 64 64 35.346 64 0 Z M 192 0 C 192 35.346 220.654 64 256 64 L 256 128 C 185.308 128 128 70.692 128 0 Z" />
-  </svg>
+const ArcxtekLogo: React.FC<{ className?: string }> = ({ className = "h-8 w-auto" }) => (
+  <img
+    src="/assets/brand/logo_arcxtek_horizontal.png"
+    alt="Arcxtek"
+    className={`${className} object-contain select-none`}
+  />
 );
 
 const ActionButton: React.FC<{
@@ -185,9 +187,8 @@ export default function App() {
         className="sticky top-0 z-50 bg-[#0c0c0c]/80 backdrop-blur-xl border-b border-white/10"
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#hero" className="flex items-center gap-3 group" aria-label="Arcxtek Home">
-            <LogoMark className="w-7 h-7 text-white transition-transform group-hover:scale-105" />
-            <span className="font-semibold text-lg tracking-tight">arcxtek</span>
+          <a href="#hero" className="flex items-center group" aria-label="Arcxtek Home">
+            <ArcxtekLogo className="h-7 md:h-8 w-auto transition-transform group-hover:scale-105" />
           </a>
 
           {/* Nav links */}
@@ -540,7 +541,7 @@ export default function App() {
       <footer className="border-t border-white/10 py-10 relative z-10 bg-black/60">
         <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
           <div className="flex items-center gap-3">
-            <LogoMark className="w-5 h-5 text-white/60" />
+            <ArcxtekLogo className="h-5 w-auto opacity-70 hover:opacity-100 transition-opacity" />
             <span>&copy; {new Date().getFullYear()} Arcxtek. Software a la medida.</span>
           </div>
           <div className="flex items-center gap-6">
